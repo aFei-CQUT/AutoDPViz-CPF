@@ -1,12 +1,14 @@
-# python3.12.7
+# latex2md.py
 # -*- coding: utf-8 -*-
 r"""
-Latex → Markdown 转换脚本
+Latex → Markdown 转换脚本（只能转换部分内容）
 功能：
-1. 顺序编号 figure / table / equation，交叉引用自动替换为 (N)
-2. 支持 \section 等标题、元数据、表格/算法/图片/公式解析
-3. CLI：python Latex2Md.py
+    1. 顺序编号 figure / table / equation，交叉引用自动替换为 (N)
+    2. 支持 \section 等标题、元数据、表格/算法/图片/公式解析
+    3. CLI：python Latex2Md.py
 """
+
+
 import re
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -415,7 +417,7 @@ class Latex2Md:
 # ------------------------------------------------- #
 if __name__ == "__main__":
     tex_path = Path("./utils/merge/merge.tex")
-    md_path = Path("./utils/merge/Latex2Md.md")
+    md_path = Path("./utils/merge/merge.md")
     raw = tex_path.read_text(encoding="utf-8", errors="replace")
     s, e = raw.find(r"\begin{document}"), raw.rfind(r"\end{document}")
     if s != -1 and e != -1:

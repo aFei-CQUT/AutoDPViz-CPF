@@ -1,3 +1,8 @@
+# merge_latex.py
+# -*- coding: utf-8 -*-
+# 用于合并分散的latex文件
+
+
 import re
 import os
 

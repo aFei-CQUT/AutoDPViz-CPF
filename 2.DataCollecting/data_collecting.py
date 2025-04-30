@@ -1,9 +1,15 @@
+# data_collecting.py
+# -*- coding: utf-8 -*-
+# python3.8.20
+# 收集实验数据
+
 import cv2
 import numpy as np
 import tensorflow as tf
+
 print(tf.__version__)
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from keras.models import Sequential
+from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 import os
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
@@ -164,7 +170,7 @@ def process_image(image_path, use_cnn=False):
     target_size = (orig_width, orig_height)
 
     # ROI定标处理
-    roi_file = "roi.txt"
+    roi_file = r"2.DataCollecting\machine\roi.txt"
     if os.path.exists(roi_file):
         roi = np.loadtxt(roi_file, delimiter=",", dtype=int)
         calibrator.roi = roi
@@ -235,7 +241,7 @@ def process_image(image_path, use_cnn=False):
     x_box, y_box, w_box, h_box = cv2.boundingRect(best_cnt)
     calibrator.px2cm = Config.REAL_WIDTH_CM / w_box
     np.savetxt(
-        "calibration.txt", [calibrator.px2cm], header="像素到厘米转换系数 (cm/px)"
+        r"2.DataCollecting\machine\calibration.txt", [calibrator.px2cm], header="像素到厘米转换系数 (cm/px)"
     )
 
     # 液位高度识别
@@ -291,7 +297,7 @@ def process_image(image_path, use_cnn=False):
     axes[1].axis("off")
 
     plt.tight_layout()
-    plt.savefig("combined_result_1.png", dpi=600)
+    plt.savefig(r"2.DataCollecting\machine\combined_result_1.png", dpi=600)
 
     # 第二张图：增强对比 + 形态学处理 + 边缘检测
     fig2, axes2 = plt.subplots(1, 3, figsize=(18, 6))
@@ -308,13 +314,13 @@ def process_image(image_path, use_cnn=False):
     axes2[2].axis("off")
 
     plt.tight_layout()
-    plt.savefig("combined_result_2.png", dpi=600)
+    plt.savefig(r"2.DataCollecting\machine\combined_result_2.png", dpi=600)
 
     plt.show()
 
     if Config.SAVE_DEBUG_IMAGES:
         pil_result = PILImage.fromarray(cv2.cvtColor(result, cv2.COLOR_BGR2RGB))
-        pil_result.save("calibration.png", dpi=(600, 600))
+        pil_result.save(r"2.DataCollecting\machine\calibration.png", dpi=(600, 600))
 
     return {
         "px_coords": (x_box, y_box, w_box, h_box),
@@ -327,7 +333,9 @@ def process_image(image_path, use_cnn=False):
 # ================= 主程序 =================
 if __name__ == "__main__":
     try:
-        result = process_image(r"code\bina\SpyNow\machine\machine.png", use_cnn=False)
+        result = process_image(
+            r"2.DataCollecting\machine\machine.png", use_cnn=False
+        )
         print("\n水槽定位报告：")
         print(f"像素坐标：X={result['px_coords'][0]}, Y={result['px_coords'][1]}")
         print(
@@ -337,7 +345,7 @@ if __name__ == "__main__":
         print(f"液位高度：{result['liquid_level_cm']:.2f}cm")
 
         # 保存数据到CSV
-        with open("liquid_level_data.csv", "w", newline="") as csvfile:
+        with open(r"2.DataCollecting\machine\liquid_level_data.csv", "w", newline="") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Timestamp", "Liquid Level (cm)"])
             writer.writerow([time.time(), result["liquid_level_cm"]])
