@@ -1,0 +1,37 @@
+% ====================== 信息隐藏命令 ======================
+
+% 使用etoolbox布尔变量
+\newbool{HideForce}  % 强制隐藏模式
+\newbool{HideWeak}   % 弱隐藏模式
+
+% 初始化默认状态
+\boolfalse{HideForce}
+\boolfalse{HideWeak}
+
+% 监听bool值设置命令
+\newcommand{\setHideOptions}[1]{%
+  \IfStrEqCase{#1}{%
+    {forcehide}{%
+      \booltrue{HideForce}%
+      \boolfalse{HideWeak}%
+    }%
+    {weakhide}{%
+      \boolfalse{HideForce}%
+      \booltrue{HideWeak}%
+    }%
+  }{%
+    \boolfalse{HideForce}%
+    \boolfalse{HideWeak}%
+  }%
+}
+
+% 通用信息遮盖模板
+\NewDocumentCommand{\coverinfo}{O{4cm} m m m}{%
+  \begin{center}#4%
+    \begin{tikzpicture}[baseline]
+      \node[anchor=west,inner sep=0pt] (text) {\normalfont#2};
+      \node[anchor=west,fill=black,inner sep=0.01cm,minimum width=#1] 
+          at (text.east) {\color{black}#3};
+    \end{tikzpicture}%
+  \end{center}%
+}

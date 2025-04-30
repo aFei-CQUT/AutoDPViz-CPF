@@ -1,0 +1,75 @@
+%%% 主文档结构
+
+% !TeX program = xelatex
+
+% documentclass: 文章类
+% fontset: 字体集，none表示不使用ctex提供的字体集
+% a4paper: 纸张大小，A4
+% UTF8: 编码格式，UTF-8
+\documentclass[UTF8,a4paper,fontset=none]{ctexart}
+
+%%% 配置加载
+%% 预定义宏包
+\input{config/packages}
+%% 字体
+\input{config/fonts}
+%% 命令
+\input{config/commands}
+%% 环境
+\input{config/environments}
+%% 布局
+\input{config/layout}
+
+%%% 文档渲染标志
+\begin{document}
+
+%%% 隐藏信息与否，用于盲审
+% \setHideOptions{forcehide}  % 强隐藏，消失
+% \setHideOptions{weakhide}   % 弱隐藏，遮掩
+% \setHideOptions{}           % 不隐藏，保留
+
+\setHideOptions{forcehide}
+
+%%% 如果需要中英文混排标题取消下方注释
+% \input{contents/title-all.tex}
+
+%%% 中文标题
+\input{contents/title-cn.tex}
+
+%%% 中文作者信息
+\input{contents/authors-cn}
+
+%%% 中文摘要
+\input{contents/abstract-cn}
+
+%%% 英文标题
+\input{contents/title-en.tex}
+
+%%% 英文作者信息
+\input{contents/authors-en}
+
+%%% 英文摘要
+\input{contents/abstract-en}
+
+%%% 引言
+\input{contents/preface}
+
+%%% 正文第一章
+\input{contents/chapter1}
+
+%%% 正文第二章
+\input{contents/chapter2}
+
+%%% 正文第三章
+\input{contents/chapter3}
+
+%%% 结论或总结
+\input{contents/conclusion}
+
+%%% 创新声明
+\input{contents/innovation-decl}
+
+%%% 参考文献
+\input{contents/references}
+
+\end{document}

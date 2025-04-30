@@ -1,0 +1,219 @@
+%  ====================== 字体配置  ======================
+%
+%  配置文档使用的中英文字体及数学符号的显示效果
+%
+%  ====================== 说明栏目 ======================
+
+
+% --- 中文排版字号命令集（原属于命令文件，但其逻辑和字体息息相关） ---
+
+% 基于中文排版规范的字号定义（字号/行距）
+\newcommand{\chuhao}{\fontsize{42pt}{50.4pt}\selectfont}      % 初号
+\newcommand{\xiaochu}{\fontsize{36pt}{43.2pt}\selectfont}     % 小初
+\newcommand{\yihao}{\fontsize{26pt}{31.2pt}\selectfont}       % 一号
+\newcommand{\xiaoyi}{\fontsize{24pt}{28.8pt}\selectfont}      % 小一
+\newcommand{\erhao}{\fontsize{22pt}{26.4pt}\selectfont}       % 二号
+\newcommand{\xiaoer}{\fontsize{18pt}{21.6pt}\selectfont}      % 小二
+\newcommand{\sanhao}{\fontsize{16pt}{19.2pt}\selectfont}      % 三号
+\newcommand{\xiaosan}{\fontsize{15pt}{18pt}\selectfont}       % 小三
+\newcommand{\sihao}{\fontsize{14pt}{16.8pt}\selectfont}       % 四号
+\newcommand{\zhongsi}{\fontsize{13pt}{15.6pt}\selectfont}     % 中四
+\newcommand{\xiaosi}{\fontsize{12pt}{14.4pt}\selectfont}      % 小四
+\newcommand{\wuhao}{\fontsize{10.5pt}{15pt}\selectfont}       % 五号
+\newcommand{\xiaowu}{\fontsize{9pt}{10.8pt}\selectfont}       % 小五
+\newcommand{\liuhao}{\fontsize{7.5pt}{9pt}\selectfont}        % 六号
+\newcommand{\xiaoliu}{\fontsize{6.5pt}{7.8pt}\selectfont}     % 小六
+
+
+% ---------------------- 中文字体配置 ----------------------
+% 主字体（宋体，对应\rmfamily命令）
+\setCJKmainfont{SimSun}[
+    ItalicFont = KaiTi,      % 斜体使用楷体（中文无真正斜体，需单独指定）
+    BoldFont   = SimHei      % 粗体使用黑体（避免伪粗体失真）
+]
+
+% 无衬线字体（黑体，对应\sffamily命令）
+\setCJKsansfont{SimHei}[
+    AutoFakeBold = 3.0       % 伪粗体强度（0=禁用，1=轻微，3=最强）
+]
+
+% 等宽字体（仿宋，对应\ttfamily命令，用于代码/等宽文本）
+\setCJKmonofont{FangSong}[
+    AutoFakeSlant = 0.2      % 伪斜体倾斜度（0=直立，0.2=约10度倾斜）
+]
+
+% ---------------------- 英文字体配置 ----------------------
+% 主字体（Times New Roman，学术论文标准字体）
+\setmainfont{Times New Roman}[
+    BoldFont = * Bold,       % 使用字体内置粗体（*表示继承主字体名）
+    ItalicFont = * Italic    % 使用字体内置斜体
+]
+
+% 无衬线字体（Arial，用于标题/强调文本）
+\setsansfont{Arial}[
+    Scale = 0.95             % 轻微缩小以适应中文混排
+]
+
+% ---------------------- 数学字体配置 ----------------------
+% XITS Math是Times风格的数学字体，与正文风格统一
+\setmathfont{XITS Math}[
+    Scale = MatchLowercase  % 大小与小写字母高度匹配
+]
+
+% 字号分级设置（确保数学符号与正文协调）
+\DeclareMathSizes{10.5}{10.5}{7.875}{6.3}  % 正文/上标/下标字号比例
+
+% ---------------------- 标题格式规范-本质上是字体配置 ----------------------
+
+
+% 设置标题编号深度
+\setcounter{secnumdepth}{5}
+
+% 章节标题三级格式（字号/字体/间距）
+\titleformat{\section}
+{\xiaosi\rmfamily\bfseries \fontspec{Arial}\bfseries} % 中文四号宋体加粗,英文用Arial字号与中文一致
+{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\wuhao\rmfamily\bfseries \fontspec{Arial}\bfseries}  % 中文五号宋体加粗,英文用Arial字号与中文一致
+{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\wuhao\rmfamily\bfseries \fontspec{Arial}\bfseries}  % 中文五号宋体加粗,英文用Arial字号与中文一致
+{\thesubsubsection}{1em}{}
+
+% 四级标题
+\titleclass{\subsubsubsection}{straight}[\subsubsection]
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand{\thesubsubsubsection}{\thesubsubsection.\arabic{subsubsubsection}}
+\titleformat{\subsubsubsection}
+  {\xiaowu\rmfamily\bfseries \fontspec{Arial}\bfseries}
+  {\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\makeatletter
+\@addtoreset{subsubsubsection}{subsubsection}
+\makeatother
+
+% 五级标题
+\titleclass{\subsubsubsubsection}{straight}[\subsubsubsection]
+\newcounter{subsubsubsubsection}[subsubsubsection]
+\renewcommand{\thesubsubsubsubsection}{\thesubsubsubsection.\arabic{subsubsubsubsection}}
+\titleformat{\subsubsubsubsection}
+  {\liuhao\rmfamily\bfseries \fontspec{Arial}\bfseries}
+  {\thesubsubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\makeatletter
+\@addtoreset{subsubsubsubsection}{subsubsubsection}
+\makeatother
+
+% ====================== 信息区块命令集 ======================
+
+% -----------------------------------------------------------
+% -本质上是字体配置
+% ---------------------- 中文信息块命令 ----------------------
+%
+% -----------------------------------------------------------
+
+% 中文标题（三号字，中文宋体加粗，英文Arial加粗）
+\newcommand{\maketitlecn}[1]{\begin{center}\sanhao\rmfamily\bfseries \fontspec{Arial}\bfseries #1 \end{center}}
+
+% 中文参赛选手
+\newcommand{\authorscn}[1]{%
+  \ifbool{HideForce}{}{%
+    \ifbool{HideWeak}{%
+      \coverinfo{参赛选手：}{#1}{\xiaosi\rmfamily}%
+    }{%
+      \begin{center}\xiaosi\rmfamily 参赛选手：#1\end{center}%
+    }%
+  }%
+}
+
+% 中文指导教师
+\newcommand{\advisorcn}[1]{%
+  \ifbool{HideForce}{}{%
+    \ifbool{HideWeak}{%
+      \coverinfo{指导教师：}{#1}{\xiaosi\rmfamily}%
+    }{%
+      \begin{center}\xiaosi\rmfamily 指导教师：#1\end{center}%
+    }%
+  }%
+}
+
+% 中文参赛学校与城市邮编
+\newcommand{\schoolinfocn}[1]{%
+  \ifbool{HideForce}{}{%
+    \ifbool{HideWeak}{%
+      \coverinfo[3.5cm]{城市邮编信息：}{#1}{\xiaowu\rmfamily}%
+    }{%
+      \begin{center}\xiaowu\rmfamily 城市邮编信息：#1\end{center}%
+    }%
+  }%
+}
+
+% 中文摘要小五号宋体，如果有英文小五号Arial
+\newcommand{\abstractcn}[1]{\xiaowu\rmfamily \fontspec{Arial} #1}
+
+% 中文关键词小五号宋体，如果有英文小五号Arial
+\newcommand{\keywordscn}[1]{\xiaowu\rmfamily \fontspec{Arial} #1}
+
+% -----------------------------------------------------------
+% -本质上是字体配置
+% ---------------------- 英文信息块命令 ----------------------
+%
+% -----------------------------------------------------------
+
+% 英文标题 (Arial，四号加粗) - 实际上和中文的一致，只是没有中文字符罢了--\rmfamily\bfseries中文宋体加粗 -> 黑体
+\newcommand{\maketitleen}[1]{\begin{center}\sanhao\rmfamily\bfseries \fontspec{Arial}\bfseries #1 \end{center}}
+
+% 英文参赛选手
+\newcommand{\authorsen}[1]{%
+  \ifbool{HideForce}{}{%
+    \ifbool{HideWeak}{%
+      \coverinfo{\wuhao\fontspec{Arial} Participants:}{#1}{\wuhao\fontspec{Arial}}%
+    }{%
+      \begin{center}\wuhao\fontspec{Arial} Participants: #1\end{center}%
+    }%
+  }%
+}
+
+% 英文指导教师
+\newcommand{\advisoren}[1]{%
+  \ifbool{HideForce}{}{%
+    \ifbool{HideWeak}{%
+      \coverinfo{\wuhao\fontspec{Arial} Academic Advisor:}{#1}{\wuhao\fontspec{Arial}}%
+    }{%
+      \begin{center}\wuhao\fontspec{Arial} Academic Advisor: #1\end{center}%
+    }%
+  }%
+}
+
+% 英文单位信息
+\newcommand{\schoolinfoen}[1]{%
+  \ifbool{HideForce}{}{%
+    \ifbool{HideWeak}{%
+      \coverinfo[4.5cm]{\wuhao\fontspec{Arial} City and Postal Information:}{#1}{\xiaowu\fontspec{Arial}}%
+    }{%
+      \begin{center}\xiaowu\fontspec{Arial} City and Postal Information: #1\end{center}%
+    }%
+  }%
+}
+
+% 英文摘要小五号Arial
+\newcommand{\abstracten}[1]{\xiaowu\fontspec{Arial} #1}
+
+% 英文关键词小五号Arial
+\newcommand{\keywordsen}[1]{\xiaowu\fontspec{Arial} #1}
+
+% ---------------------- 图表系统规范-本质上是字体配置 ----------------------
+
+% 图标题样式 + 表格标题样式（小五号加粗，居中）
+\DeclareCaptionFont{tablefont}{\xiaowu\rmfamily\bfseries \fontspec{Times New Roman}}
+\captionsetup{
+  font      = {tablefont},
+  labelfont = bf,
+  labelsep  = quad,
+  justification = centering
+}
+
+% 表格内部字体为6号字，中文宋体，英文Times New Roman
+\newcommand{\settableinnerfont}{\liuhao\rmfamily \fontspec{Times New Roman}}

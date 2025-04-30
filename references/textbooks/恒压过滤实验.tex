@@ -1,0 +1,225 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{multirow}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+% 添加中文支持
+\usepackage[UTF8, fontset=windows]{ctex}  % 启用中文支持，并使用 Windows 系统的默认字体
+
+% 设置西文字体（如果需要的话，可以修改为其他字体）
+\setmainfont{Times New Roman}  % 设置英文正文字体为 Times New Roman
+
+% 设置数学字体
+\setmathfont{Latin Modern Math}  % 设置数学字体
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{实验8 恒压过滤常数测定}
+
+\subsection{一，实验目的}
+
+（1）熟悉板框压滤机的构造和操作方法。
+
+（2）掌握恒压过滤常数 $K, ~ q_e, ~ \theta_e$ 的测定方法，加深对 $K, ~ q_e, ~ \theta_e$ 概念和影响因素的理解。
+
+（3）了解过滤压力对过滤速率的影响，学习滤饼的压缩性指数 和物料特性常数 $k$ 的测定方法。
+
+（4）学习 $\frac{d \theta}{d q}-q$ 一类关系的实验确定方法。
+
+（5）测定洗涤滤饼的洗涤速率，验证过滤终了速率和洗涤速率的关系。
+
+\subsection{二，实验内容}
+
+（1）测定不同压力下的过滤常数 $K, ~ q_e, ~ \theta_e$ 。
+
+（2）根据实验测量数据，计算滤饼的压缩性指数 $s$ 和物料特性常数 $k_{\circ}$
+
+\subsection{三，实验原理及过滤常数的求取}
+
+1．实验原理
+
+过滤是利用过滤介质进行液－固系统的分离过程，过滤介质通常采用带有许多毛细孔的物质如帆布，毛毯，多孔陶瓷等。含有固体颗粒的悬浮液在一定压力作用下，液体通过过滤介质，固体颗粒被截留，从而使液固两相分离。
+
+在过滤过程中，由于固体颗粒不断地被截留在介质表面上，滤饼厚度逐渐增加，使得液体流过固体颗粒之间的孔道加长，增加了流体流动阻力。故恒压过滤时，过滤速率是逐渐下降的。随着过滤的进行，若想得到相同的滤液量，则过滤时间要增加。
+
+2．$K, ~ q_e$ 和 $\theta_e$ 的求取
+
+对恒压过滤，有：
+
+$$
+\left(q+q_e\right)^2=K\left(\theta+\theta_e\right)
+$$
+
+式中 $q$ —单位过滤面积获得的滤液体积， $m^3 / m^2$ ；
+$q_e$ ——单位过滤面积上的虚拟滤液体积， $m^3 / m^2$ ；
+$\theta$ ——实际过滤时间， $s$ ；
+$\theta_e$ —虚拟过滤时间， $s$ ；
+$K$ ——过滤常数， $m^2 / s$ 。
+将式（3－31）进行微分可得：
+
+$$
+\frac{d \theta}{d q}=\frac{2}{K} q + \frac{2}{K} q_e
+$$
+
+这是一个直线方程式，由于实验过程中不可能测量到无穷小时间段内的滤液体积的变化，只能测得有限时间段内的滤液体积，当各数据点的时间间隔不大时，$\frac{d \theta}{d q}$ 可用增量之比 $\frac{\Delta \theta}{\Delta q}$ 来代替于普通坐标上标绘 $\frac{d \theta}{d q}-q$ 的关系曲线：
+
+$$
+\frac{\Delta \theta}{\Delta q}=\frac{2}{K} \bar{q} + \frac{2}{K} q_e
+$$
+
+式中 $\Delta q$ —每次测定的单位过滤面积滤液体积（实验中等量分配） $m^3 / m^2$ ；
+$\Delta \theta$ —每次测定的滤液体积 $\Delta q$ 所对应的过滤时间，$s$ ；
+$\bar{q}$ ——相邻两个 $q$ 值的平均值， $m^3 / m^2$ 。
+注：式（3－33）中 $\bar{q}$ 代替式（3－32）的 $q$ ，原因可参见化工原理教材中过滤常数测定章节。
+
+在直角坐标系中，以 $\frac{\Delta \theta}{\Delta q}$ 为纵坐标，相对应的 $\bar{q}$ 为横坐标绘图，可得一直线，直线的斜率为 $\frac{2}{K}$ ，截距 为 $\frac{2}{K} q_e$ ，从而求出 $K, ~ q_e$ 。至于 $\theta_e$ 可由式（3－34）求出：
+
+$$
+q_e^2=K \theta_e
+$$
+
+改变过滤压力，可得到不同操作压力下的过滤常数 $K$ 值，根据过滤常数的定义式：
+
+$$
+K=2 k \Delta p^{1-s}
+$$
+
+两边取对数：
+
+$$
+\lg K=(1-s) \lg \Delta p + \lg (2 k)
+$$
+
+在不同压力过滤时，因 $k=\frac{1}{\mu r^{\prime} v}=$ 常数 ，故 $K$ 与 $\Delta p$ 的关系在对数坐标上标绘时应是一条直线，直线的斜率为 $1-s$ ，由此可得滤饼的压缩性指数 $s$ ，然后代入式（3－35）求物料特性常数 $k_{\circ}$ 。
+
+\subsection{四，实验装置和流程}
+
+2．实验装置二
+
+（1）实验装置
+
+实验装置流程如图3－25所示。原料槽内配有一定浓度的轻质碳酸钙悬浮液（浓度在 $6\%$ $\sim 8\%$ 左右），用电动搅拌器进行均匀搅拌（以浆液不出现旋涡为好）。启动旋涡泵 19，调节阀门7使压力表11指示在规定值。滤液在计量槽内计量。
+
+1—搅拌电机；2—原料罐；3—搅拌挡板；4，14，15—排液阀；5—洗水槽；6，7—调节阀；8—温度计；9，10，12—阀门；11—压力表；13—滤液计量槽；16—板框压滤机；17—过滤机压紧装置；18—过滤板；19—旋涡泵实验装置中过滤、洗涤管路分布如图3-26所示。
+
+（2）实验设备主要技术参数（表3－30）
+\begin{table}[h]
+    \centering
+    \caption{表3－30 恒压过滤常数测定实验设备主要技术参数}
+    \begin{tabular}{c|c|c|c}
+    \hline 序号 & 名称 & 规格 & 材料 \\
+    \hline 1 & 搅拌器 & 型号：KDZ－1 & \\
+    \hline 2 & 过滤板 & $160 mm \times 180 mm \times 11 mm$ & 不锈钢 \\
+    \hline 3 & 滤布 & 工业用 & \\
+    \hline 4 & 过滤面积 & $0.0475 m^2$ & \\
+    \hline 5 & 计量桶 & 长 327 mm ，宽 286 mm & \\
+    \hline
+    \end{tabular}
+\end{table}
+
+（3）实验装置面板图（图3－27）
+
+图3-27　恒压过滤常数测定实验设备仪表面板示意图
+
+\subsection{五，实验操作及注意事项}
+
+2．实验装置二
+
+（1）实验步骤
+
+1）实验准备工作
+
+（1）原料罐内配好浓度在 $6\% \sim 8\%$ 左右的轻质碳酸钙悬浮液，系统接上电源，开启总电源，开启搅拌，使料浆搅拌均匀。
+
+（2）在滤液水槽中加入一定高度液位的水（水位在标尺 50 mm 处即可）。
+
+（3）板框过滤机板，框排列顺序为固定头 $\rightarrow$ 非洗涤板 $(\cdot) 
+\rightarrow$ 框 $(:) \rightarrow$ 洗涤板 $(⋮)\rightarrow$ 框 $(:) \rightarrow$ 非洗涤板$(\cdot)$$\rightarrow$ 可动头。用压紧装置压紧后待用。
+
+2）过滤实验
+
+（1）阀门9，7全开，其他阀门全部关闭（图3－23）。启动旋涡泵19，打开阀门12，利用料液回水阀7调节压力，使压力表11达到规定值。
+
+（2）待压力表11数值稳定后，打开过滤机滤液入口阀A，随后快速打开过滤机出口阀门B，C开始过滤。当计量桶13内见到第一滴液体时开始计时，记录滤液每增加高度 10 mm 时所用的时间。当计量桶 13 读数为 150 mm 时停止计时，并立即关闭过滤机进料阀 B。
+
+（3）打开料液回水阀 7 使压力表11指示值下降，关闭泵开关。放出计量槽内的滤液倒回槽内，以保证料浆浓度保持不变。
+
+3）洗涤实验
+
+（1）洗涤实验时全开阀门10，6，其他阀门全关。调节阀门6使压力表11达到过滤要求的数值。打开阀门B，随后快速打开过滤机出口阀门C开始洗涤。等到阀门B有液体流下时开始计时，洗涤量为过滤量的 $1 / 4$ 。实验结束后，放出计量槽内的滤液到洗水槽 5 内。
+
+（2）开启压紧装置，卸下过滤框内的滤饼并放回滤浆槽内，将滤布清洗干净。
+
+（3）改变压力值，从开始重复上述实验。压力分别为 $0.05 MPa, ~ 0.10 MPa, \\~ 0.15 MPa$ 。
+
+（2）操作注意事项
+
+1）过滤板与过滤框之间的密封垫注意要放正，过滤板与过滤框上面的滤液进出口要对齐。滤板与滤框安装完毕后要用摇柄把过滤设备压紧，以免漏液。
+
+2）计量槽的流液管口应紧贴桶壁，防止液面波动影响读数。
+
+3）由于电动搅拌器为无级调速，使用时首先接上系统电源，打开调速器开关，调速钮一定由小到大缓慢调节，切勿反方向调节或调节过快，以免损坏电机。
+
+4）启动搅拌前，用手旋转一下搅拌轴以保证启动顺利。
+
+5）每次实验结束后将滤饼和滤液全部倒回料浆槽中，保证料液浓度保持不变。
+
+\end{document}

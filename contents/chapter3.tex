@@ -1,0 +1,214 @@
+% ====================== 实验部分 ======================
+
+\section{实验部分}
+
+% 涉及的物理量、公式、图表，请参照后续的“论文写作说明”进行编辑。
+
+过滤是一种液-固分离的过程，通常通过施加恒定的压力，液体穿过过滤介质，固体颗粒被截留在介质表面形成滤饼。随着过滤的进行，滤饼厚度逐渐增加，液体流经的孔道长度增大，导致流动阻力增加。因此，即使维持恒定的过滤压力，过滤速率也会逐渐下降，为了获得相同的滤液量，所需的过滤时间将逐渐增加。
+
+\subsection{实验原理}
+
+% 简单重提实验原理。
+
+在恒压过滤中，过滤速率的变化通常使用以下关系式描述：
+\begin{equation}
+(q + q_{e})^2 = K (\theta + \theta_{e})
+\end{equation}
+其中，$q$是单位过滤面积上获得的滤液体积（$\mathrm{m}^3/\mathrm{m}^2$），$q_{e}$是单位过滤面积上的虚拟滤液体积，$\theta$为实际过滤时间，$\theta_{e}$为虚拟过滤时间，$K$为过滤常数（$\mathrm{m}^2/\mathrm{s}$）。
+
+通过对式子微分，得
+\begin{equation}
+\frac{d\theta}{dq} = \frac{2}{K} q + \frac{2}{K} q_{e}
+\end{equation}
+在实验过程中，我们通过测量有限时间段内滤液体积的变化，绘制$\frac{\Delta \theta}{\Delta q}$与$\bar{q}$的关系曲线，从而求得过滤常数$K$和虚拟滤液体积$q_{e}$。根据以下关系式：
+\begin{equation}
+q_{e}^2 = K\theta_{e}
+\end{equation}
+进一步计算出虚拟过滤时间$\theta_{e}$。
+
+\textbf{压力与过滤常数的关系}:
+通过改变过滤压力$\Delta p$，可以得到不同压力下的过滤常数$K$。根据过滤常数的定义，公式如下：
+\begin{equation}
+K = 2k\Delta p^{1-s}
+\end{equation}
+取对数后，得到
+\begin{equation}
+\lg K = (1 - s)\lg \Delta p + \lg(2k)
+\end{equation}
+在对数坐标中，$K$与$\Delta p$的关系应该是直线，直线的斜率为$1-s$。通过这种方法可以求得滤饼的压缩性指数$s$以及物料特性常数$k$。
+
+\subsection{试剂与材料}
+
+% 列出试剂纯度、制造商等基本信息，必要时列出关键溶液的配制和保存方法及注意事项。
+
+\noindent\textbf{主要试剂及信息}：
+
+轻质碳酸钙悬浮液，浓度在 $6\%$ $\sim$ $8\%$ 左右。
+
+\noindent\textbf{溶液配制与保存}：
+
+轻质碳酸钙悬浮液应在实验前配制，确保浓度控制在 $6\%$ $\sim$ $8\%$ 范围内。使用搅拌器保持料液均匀，防止出现旋涡。
+
+\subsection{仪器和表征方法}
+
+% 列出仪器型号、制造商等基本信息，正确表述分析测试方法（如制样方法、测试条件等）。
+
+实验装置流程如图\ref{fig:equipment_1}所示。原料槽内配有一定浓度的轻质碳酸钙悬浮液（浓度在 $6\%$ $\sim$ $8\%$ 左右），用电动搅拌器进行均匀搅拌（以浆液不出现旋涡为好）。启动旋涡泵 19，调节阀门7使压力表11指示在规定值。滤液在计量槽内计量。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{figures/equipment/equipment_1.png}
+    \caption{恒压过滤实验装置流程示意图}
+    \label{fig:equipment_1}
+\end{figure}
+
+1—搅拌电机；2—原料罐；3—搅拌挡板；4，14，15—排液阀；5—洗水槽；6，7—调节阀；8—温度计；9，10，12—阀门；11—压力表；13—滤液计量槽；16—板框压滤机；17—过滤机压紧装置；18—过滤板；19—旋涡泵实验装置中过滤、洗涤管路分布如图\ref{fig:equipment_2}所示。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth,height=0.3\textheight,keepaspectratio]{figures/equipment/equipment_2.png}
+    \caption{板框压滤机过滤洗涤管路分布图}
+    \label{fig:equipment_2}
+\end{figure}
+
+（2）实验设备中主要的技术参数如表\ref{tab:equipment_parameters}所示
+
+\begin{table}[H]
+    \centering
+    \caption{恒压过滤常数测定实验设备主要技术参数}
+    \label{tab:equipment_parameters}
+    \settableinnerfont
+    \begin{tabular}{cccc}
+        \toprule
+        序号 & 名称 & 规格 & 材料 \\
+        \midrule
+        1 & 搅拌器 & 型号：KDZ－1 & \\
+        2 & 过滤板 & $160 \, \mathrm{mm} \times 180 \, \mathrm{mm} \times 11 \, \mathrm{mm}$ & 不锈钢 \\
+        3 & 滤布 & 工业用 & \\
+        4 & 过滤面积 & $0.0475 \, \mathrm{m}^2$ & \\
+        5 & 计量桶 & 长 327 mm，宽 286 mm & \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+（3）实验装置面板图如下
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth,height=0.6\textheight,keepaspectratio]{figures/equipment/equipment_3.png}
+    \caption{实验装置面板图}
+    \label{fig:equipment_3}
+\end{figure}
+
+
+\subsection{实验步骤/方法/现象}
+
+% 详细的实验步骤/方法（按此实验步骤能够得到可重复的结果，如涉及改装、自制等非标准实验装置，要求给出实验装置图）。
+
+% 详细的实验现象/主要的表征结果和实验数据（要求有效数字准确，图、表要规范、美观）。
+
+\subsubsection{实验准备工作}
+
+（1）原料罐内配好浓度在 $6\% \sim 8\%$ 左右的轻质碳酸钙悬浮液，系统接上电源，开启总电源，开启搅拌，使料浆搅拌均匀。
+
+（2）在滤液水槽中加入一定高度液位的水（水位在标尺 50 mm 处即可）。
+
+（3）板框过滤机板，框排列顺序为固定头 $\rightarrow$ 非洗涤板 $(\cdot) 
+\rightarrow$ 框 $(:) \rightarrow$ 洗涤板 $(⋮)\rightarrow$ 框 $(:) \rightarrow$ 非洗涤板$(\cdot)$$\rightarrow$ 可动头。用压紧装置压紧后待用。
+
+\subsubsection{过滤实验}
+
+（1）阀门9，7全开，其他阀门全部关闭（图\ref{fig:equipment_1}）。启动旋涡泵19，打开阀门12，利用料液回水阀7调节压力，使压力表11达到规定值。
+
+（2）待压力表11数值稳定后，打开过滤机滤液入口阀A，随后快速打开过滤机出口阀门B，C开始过滤。当计量桶13内见到第一滴液体时开始计时，记录滤液每增加高度 10 mm 时所用的时间。当计量桶 13 读数为 150 mm 时停止计时，并立即关闭过滤机进料阀 B。
+
+（3）打开料液回水阀 7 使压力表11指示值下降，关闭泵开关。放出计量槽内的滤液倒回槽内，以保证料浆浓度保持不变。
+
+\subsubsection{洗涤实验}
+
+（1）洗涤实验时全开阀门10，6，其他阀门全关。调节阀门6使压力表11达到过滤要求的数值。打开阀门B，随后快速打开过滤机出口阀门C开始洗涤。等到阀门B有液体流下时开始计时，洗涤量为过滤量的 $1 / 4$ 。实验结束后，放出计量槽内的滤液到洗水槽 5 内。
+
+（2）开启压紧装置，卸下过滤框内的滤饼并放回滤浆槽内，将滤布清洗干净。
+
+（3）改变压力值，从开始重复上述实验。压力分别为 $0.05 MPa,0.10 MPa, 0.15 MPa$ 。
+
+\subsubsection{操作注意事项}
+
+（1）过滤板与过滤框之间的密封垫注意要放正，过滤板与过滤框上面的滤液进出口要对齐。滤板与滤框安装完毕后要用摇柄把过滤设备压紧，以免漏液。
+
+（2）计量槽的流液管口应紧贴桶壁，防止液面波动影响读数。
+
+（3）由于电动搅拌器为无级调速，使用时首先接上系统电源，打开调速器开关，调速钮一定由小到大缓慢调节，切勿反方向调节或调节过快，以免损坏电机。
+
+（4）启动搅拌前，用手旋转一下搅拌轴以保证启动顺利。
+
+（5）每次实验结束后将滤饼和滤液全部倒回料浆槽中，保证料液浓度保持不变。
+
+过程中记录实验数据于下表\ref{tab:orginal-data}中：
+
+\begin{table}[H]
+    \centering
+    \caption{板框压滤机过滤常数的测定}
+    \settableinnerfont
+    \label{tab:orginal-data}
+    \begin{tabular}{ccccccccccccc}
+        \toprule
+        \multicolumn{2}{c}{\multirow{2}{*}{}} & 
+        \multicolumn{2}{c}{滤液参数} & 
+        \multicolumn{3}{c}{0.05 MPa} & 
+        \multicolumn{3}{c}{0.10 MPa} & 
+        \multicolumn{3}{c}{0.15 MPa} \\
+        \cmidrule(lr){3-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10} \cmidrule(lr){11-13}
+        序号 & 
+        \makecell{高度 \\ (mm)} & 
+        \makecell{$q$ \\ (m$^3$/m$^2$)} & 
+        \makecell{$\bar{q}$ \\ (m$^3$/m$^2$)} & 
+        \makecell{$\theta$ \\ (s)} & 
+        \makecell{$\Delta\theta$ \\ (s)} & 
+        \makecell{$\Delta\theta / \Delta q$ \\ (s/m)} & 
+        \makecell{$\theta$ \\ (s)} & 
+        \makecell{$\Delta\theta$ \\ (s)} & 
+        \makecell{$\Delta\theta / \Delta q$ \\ (s/m)} & 
+        \makecell{$\theta$ \\ (s)} & 
+        \makecell{$\Delta\theta$ \\ (s)} & 
+        \makecell{$\Delta\theta / \Delta q$ \\ (s/m)} \\
+        \midrule
+        1 & 60 & 0.01 & 0.01 & 17.68 & 17.68 & 1768 & 14.6 & 14.6 & 1460 & 9.04 & 9.04 & 904 \\
+        2 & 70 & 0.02 & 0.02 & 57.88 & 40.2 & 4020 & 35.61 & 21.01 & 2101 & 25.7 & 16.66 & 1666 \\
+        3 & 80 & 0.03 & 0.03 & 117.64 & 59.76 & 5976 & 64.53 & 28.91 & 2891 & 48.74 & 23.04 & 2304 \\
+        4 & 90 & 0.04 & 0.04 & 183.41 & 65.77 & 6577 & 94.71 & 30.17 & 3017 & 73.95 & 25.21 & 2521 \\
+        5 & 100 & 0.05 & 0.05 & 261.36 & 77.95 & 7795 & 135.71 & 41 & 4100 & 106.55 & 32.6 & 3260 \\
+        6 & 110 & 0.06 & 0.06 & 359.7 & 98.34 & 9834 & 183.58 & 47.87 & 4787 & 141.28 & 34.73 & 3473 \\
+        7 & 120 & 0.07 & 0.07 & 470.81 & 111.11 & 11111 & 237.58 & 53.99 & 5399 & 182.11 & 40.83 & 4083 \\
+        8 & 130 & 0.08 & 0.08 & 600.73 & 129.92 & 12992 & 296.65 & 59.06 & 5906 & 225.95 & 43.84 & 4384 \\
+        9 & 140 & 0.09 & 0.09 & 857.51 & 256.78 & 25678 & 381.12 & 84.47 & 8447 & 280.95 & 55 & 5500 \\
+        10 & 145/150 & 0.095/0.10 & 0.095/0.10 & 3521.72 & 2664.21 & 532842 & 813.05 & 431.92 & 43192 & 401.56 & 120.61 & 12061 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+实验数据处理后的结果记录表\ref{tab:result-data}中：
+
+\begin{table}[H]
+    \centering
+    \caption{恒压过滤常数测定实验数据处理结果}
+    \label{tab:result-data}
+    \begin{tabular}{ccccccc}
+        \toprule
+        序号 & 斜率 & 截距 & 过滤压力 $/ \mathrm{MPa}$ & \begin{tabular}{c}
+        K \\ 
+        $/ \mathrm{m}^2 \cdot \mathrm{s}^{-1}$
+        \end{tabular} & \begin{tabular}{c}
+        $q_{e}$ \\ 
+        $/ \mathrm{m}$
+        \end{tabular} & \begin{tabular}{c}
+        $\theta_{e}$ \\ 
+        $/ \mathrm{s}$
+        \end{tabular} \\
+        \midrule
+        1 & 57351.39 & -341.11 & 0.05 & $3.485 \times 10^{-5}$ & $-5.945 \times 10^{-3}$ & 1.013 \\
+        2 & 19450.07 & 388.88 & 0.10 & $1.028 \times 10^{-4}$ & $2.000 \times 10^{-2}$ & 3.892 \\
+        3 & 13085.00 & 398.80 & 0.15 & $1.528 \times 10^{-4}$ & $3.048 \times 10^{-2}$ & 6.077 \\
+        \bottomrule
+    \end{tabular}
+\end{table}

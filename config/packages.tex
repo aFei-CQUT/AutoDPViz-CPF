@@ -1,0 +1,64 @@
+% ====================== 加载库包  ======================
+
+%  字体与编码系统
+% \usepackage{ctex}             % 中文支持，提供中文排版功能，适用于中文文档，但不能与ctexart同时加载
+% \usepackage{xeCJK}            % 也不需要加载xeCJK，ctex已包含中文字体支持
+
+%  页面布局与样式
+\usepackage{geometry}           % 页面尺寸与边距控制，便于设置页面大小和边距
+\usepackage{setspace}           % 行距调整包，支持设置单倍行距、1.5倍行距等
+\usepackage{titlesec}           % 章节标题格式定制，支持自定义章节标题样式
+\usepackage[normalem]{ulem}     % 增强的下划线功能，提供如波浪线等多种下划线样式
+
+%  表格相关库包
+\usepackage{array}              % 扩展LaTeX表格列格式功能
+\usepackage{booktabs}           % 专业的表格线规则，用于生成高质量的表格线，这里用来三线表
+\usepackage{multirow}           % 多行表格定制
+\usepackage{longtable}          % 跨页长表格支持，表格内容跨越多页时非常有用
+\usepackage{tabularx}           % 自动调整列宽的表格，适合宽表格
+\usepackage{threeparttable}     % 支持表格的标题、主体与脚注集成
+\usepackage{makecell}           % 让表格单元格更灵活，支持多种样式配置
+\usepackage{caption}            % 图表标题格式控制，可以修改标题字体、字号等
+\usepackage{subcaption}        % 支持子图和子表格的标题格式控制
+
+%  图片插入
+\usepackage{graphicx}           % 图形插入支持，支持多种图片格式及尺寸调整
+
+%  绘图库
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usepackage{adjustbox}
+\usepackage{xparse}
+
+%  排版增强
+\usepackage{ragged2e}           % 提升段落对齐功能，提供更灵活的对齐方式
+
+%  数学符号字体
+\usepackage{unicode-math}       % 用于设置数学字体这里我用了数学字体的格式所以要使用
+\usepackage{fontspec}           % 用于设置字体，必须与 XeLaTeX 或 LuaLaTeX 配合使用
+
+%  数学符号
+\usepackage{amsmath}            % 数学公式增强，提供更多数学公式环境
+
+%  其他学科支持
+\usepackage{siunitx}            % 提供标准化的SI单位格式，支持自动格式化单位
+\usepackage[version=4]{mhchem}  % 化学式排版，支持化学反应式、元素符号等排版
+\usepackage{chemfig}            % chemfig 宏包，用于绘制化学结构式
+
+%  参考文献与引用
+\usepackage{cite}               % 引用优化，提供更灵活的参考文献引用格式
+
+%  工具类与辅助宏包
+\usepackage{enumitem}           % 列表格式定制，允许自定义项目符号、编号等格式
+\usepackage{etoolbox}           % 提供更多LaTeX命令增强功能，简化自定义命令的创建
+\usepackage{fancyhdr}           % 页眉页脚定制，允许用户自定义页眉和页脚的内容
+\usepackage{xstring}
+
+%  算法与程序代码
+% \usepackage[linesnumbered, ruled]{algorithm2e} % 算法包与下面三个算法阵营有冲突
+
+%  这三个组合加上浮动体支持跨页算法
+\usepackage{algorithm}        % 算法浮动体环境
+\usepackage{algpseudocode}    % 伪代码语法支持
+\usepackage{float}            % 浮动体精确控制 (H 位置限定符)
+\usepackage{lipsum}          % 占位文本生成 (调试用，正式文档可移除)

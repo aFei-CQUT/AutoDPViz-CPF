@@ -1,0 +1,3 @@
+pdf转docx + pandoc转docx 两种方式结合即可
+
+实际上这种方法并不好用，acrobat转为docx大量公式和变量要重新打。因acrobat会保留pdf格式，而pandoc不会，只保留最基础的格式。复制粘贴解决的话会因两者格式不一样而需要手动调整。

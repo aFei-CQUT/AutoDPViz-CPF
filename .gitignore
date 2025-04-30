@@ -1,0 +1,21 @@
+*.aux
+*.log
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+*.agx
+
+*.ttf
+*.otf
+
+# *.docx
+*.doc
+*.xls
+*.pdf

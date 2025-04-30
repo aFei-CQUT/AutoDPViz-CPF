@@ -1,0 +1,62 @@
+\documentclass[UTF8,a4paper]{article}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\usepackage[margin=1cm]{geometry} % 设置页边距为1cm
+
+% 字体配置与模板保持一致
+\setmainfont{Times New Roman}
+\setmathfont{XITS Math}
+
+% 算法格式配置
+\SetAlFnt{\normal}
+\SetAlCapFnt{\normal\bfseries}
+\SetAlCapNameFnt{\normal}
+\SetAlCapSkip{0pt} % 减小标题与内容间距
+
+\begin{document}
+
+\begin{algorithm}[H]
+    \caption{数据采集数学建模}
+    \KwIn{图像数据 $I(x, y)$}
+    \KwOut{处理后的图像数据 $I_b(x, y)$, $I_e(x, y)$, $I_p(x, y)$，边缘检测结果 $E(x, y)$，水槽位置 $(x_s, y_s)$，液体高度 $h_{\text{real}}$}
+    
+    \textbf{初始化}:  
+    设定阈值 $T$\;
+    设定Canny阈值 $T_1$, $T_2$\;
+    
+    \tcp{图像二值化和对比度增强}
+    \For{每个像素点 $(x,y) \in I$}{
+        \eIf{$I(x,y) \geq T$}{
+            $I_b(x,y) \leftarrow 1$\;
+        }{
+            $I_b(x,y) \leftarrow 0$\;
+        }
+    }
+    执行对比度增强:  
+    $I_e \leftarrow \text{CLAHE}(I, \text{clipLimit}, \text{tileGridSize})$\;
+    
+    \tcp{图像形态学处理和边缘检测}
+    执行形态学操作:  
+    $I_p \leftarrow \text{Morphology}(I_e)$\;
+    执行Canny检测:  
+    $E \leftarrow \text{Canny}(I_p, T_1, T_2)$\;
+    
+    \tcp{水槽位置和液体高度测量}
+    计算水槽位置 $(x_s, y_s)$\;
+    设定实际水槽宽度 $W_{\text{real}}$\;
+    计算像素到厘米的转换系数:  
+    $C_{\text{px2cm}} \leftarrow \frac{W_{\text{real}}}{W_{\text{px}}}$\;
+    测量液体高度 $h_{\text{px}}$（单位：像素）\;
+    计算实际高度:  
+    $h_{\text{real}} \leftarrow h_{\text{px}} \cdot C_{\text{px2cm}}$\;
+    
+    \tcp{数据存储与传输}
+    保存数据并传输到计算系统进行进一步处理\;
+    
+    \Return $I_b, I_e, I_p, E, (x_s, y_s), h_{\text{real}}$\;
+\end{algorithm}
+
+\end{document}

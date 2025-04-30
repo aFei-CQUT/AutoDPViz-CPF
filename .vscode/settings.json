@@ -1,0 +1,32 @@
+{
+    "extensions.recommendations": [
+        "julialang.language-julia", // Julia 编程支持插件
+        "James-Yu.latex-workshop", // LaTeX 支持插件，支持自动编译、语法高亮等
+        "markdown-preview-enhanced.markdown-preview-enhanced", // Markdown 预览插件
+        "GitLens.gitlens", // Git 增强插件，查看 Git 历史、提交等
+        "eamodio.gitlens", // 另一种 GitLens 插件，用于增强 Git 功能
+        "vscode-icons-team.vscode-icons", // 提供文件图标，帮助更好地管理项目结构
+        "dbaeumer.vscode-eslint", // JavaScript/TypeScript 代码风格检查
+        "esbenp.prettier-vscode", // 代码格式化工具，支持多种语言
+        "editorconfig.editorconfig", // 支持编辑器配置，保持一致的代码风格
+        "coenraads.bracket-pair-colorizer-2", // 用不同的颜色高亮匹配的括号
+        "ms-python.python", // Python 编程支持插件
+        "ms-python.pylance", // Python 代码提示和类型检查
+        "ms-vscode.cpptools", // C/C++ 编程支持插件
+        "rust-lang.rust", // Rust 编程语言支持插件
+        "redhat.vscode-yaml", // YAML 文件支持插件
+        "vscoss.vscode-ansible", // Ansible 开发支持插件
+        "formulahendry.auto-close-tag", // 自动闭合 HTML/XML 标签
+        "humao.rest-client", // 支持 REST API 调试的插件
+        "stylelint.vscode-stylelint", // CSS 代码风格检查
+        "DavidAnson.vscode-markdownlint", // Markdown 文件风格检查
+        "Gruntfuggly.todo-tree", // 查找和管理代码中的 TODO 和 FIXME 注释
+        "streetsidesoftware.code-spell-checker", // 拼写检查工具
+        "tomoki1207.pdf", // 支持 PDF 文件的查看和高亮
+        "vscode.remote-ssh", // 远程开发支持
+        "vscode.remote-wsl", // 支持 Windows Subsystem for Linux (WSL) 开发
+        "xdebug.php-debug", // PHP 调试支持插件
+        "VisualStudioExptTeam.vscodeintellicode", // AI 自动补全插件
+        "abusaidm.html-snippets" // HTML 代码片段插件
+    ],
+}

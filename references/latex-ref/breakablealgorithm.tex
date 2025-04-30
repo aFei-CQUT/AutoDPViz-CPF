@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{algorithm,algpseudocode,float}
+\usepackage{lipsum}
+\usepackage{amsmath}
+
+
+\makeatletter
+\newenvironment{breakablealgorithm}
+{% \begin{breakablealgorithm}
+\begin{center}
+    \refstepcounter{algorithm}% New algorithm
+    \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+    \renewcommand{\caption}[2][\relax]{% Make a new \caption
+    {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+    \ifx\relax##1\relax % #1 is \relax
+        \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+    \else % #1 is not \relax
+        \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+    \fi
+    \kern2pt\hrule\kern2pt
+    }
+}{% \end{breakablealgorithm}
+    \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+\end{center}
+}
+\makeatother
+
+
+\begin{document}
+\section{AIS data filter algorithm}
+\begin{breakablealgorithm}
+        \caption{AIS filter algorithm}
+        \begin{algorithmic}[1] %每行显示行号
+            \Require $VesselInfoList$ the AIS data after grouping
+            \Ensure  $InboundVesselList$ inbound vessel list,
+            $OutboundVesselList$ \\ outbound vessel list
+            \Function {AIS data Extract-Transform-Load}{$VesselInfoList$}
+                \State $temptable1 \gets 0$
+                \While{$VesselInfoList \not\in \emptyset$}
+                    \If {$VesselSpeed<0||VesselSpeed>30kn$}
+                    \State $\textbf{Delete}\,these\,AIS\,data;$
+                    \EndIf
+                    \If {$Latitude>90^\circ||Longitude>180^\circ$}
+                    \State $\textbf{Delete}\,these\,AIS\,data;$
+                    \EndIf
+                \State $\textbf{Save}\,the\,rest\,AIS\,data\,into\,\textbf{temptable1};$
+                \EndWhile
+            \EndFunction
+            \State
+            \Function {preliminary filtering algorithm}{$\textbf{temptable1}$}
+            \State $\textbf{Get}\,the \,water \,boundary \,coordination;$
+            \State $\textbf{Delete} \,the \,AIS \,data \,out \,of \,boundary \,coordination;$
+            \State $\textbf{Save} \,the \,rest \,AIS \,data \,into \,\textbf{temptable2}$
+            \Function {Standardization the distance}{$\textbf{temptable2}$}
+            \State $\textbf{Read}\,the\,Vessel\,Length\,data\,from\,\textbf{temptable2};$
+            \State $calculate\,the\,distance:$
+            \State $delta D=1852.25(\sqrt{(\varphi_2-\varphi_1)^2+(\lambda_2-\lambda_1)^2})/Length;$
+            \State $\text{Save}\,the\,data\,into\,\textbf{temptable3};$
+            \EndFunction
+            \EndFunction
+            \State
+            \Function{Fine filter}{$\textbf{temtable3}$}
+            \State $\text{Determine}\,the compound\_channel\,direction:\varphi_3;$
+            \Function {inbound/outbound determination}{$\textbf{temptable3}$}
+            \State $\text{Read}\,the\,vessel's\,heading\,or\,course\,from\,\textbf{temptable3}:\varphi_4;$
+            \If {$\varphi_4\in(\varphi_3\pm10^\circ)$}
+            \State $Vessel inbound;$
+            \State $\textbf{save}\,the\,AIS\,data\,into\,\textbf{InboundVesselList};$
+            \Else {$\varphi_4\in(\varphi_3\pm180^\circ)\pm10^\circ$}
+            \State $Vessel outbound;$
+            \State $\textbf{Save}\,the\,AIS\,data\,into\,\textbf{OutboundVesselList};$
+            \EndIf
+            \EndFunction
+            \Function {Process AIS data}{$\textbf{InboundVesselList/OutboundVesselList}$}
+            \State$\textbf{Read}\,the\,Vessel\,speed\,and\,time\,from\,InboundVesselList\,OutboundVesselList\,pos\_time;$
+            \If {$rate\_of\_change=(speed[i]-speed[i-1])/(pos_time[i]-pos_time[i-1])<threshold$}
+            \State $\textbf{Delete}\,current\,AIS\,data;$
+            \Else
+            \State $\textbf{Save}\,the\,AIS\,data;$
+            \EndIf
+            \EndFunction
+            \EndFunction
+            \State $\textbf{Output}\,the\,InboundVesselList\,and\,OutboundVesselList;$
+    \end{algorithmic}
+    \end{breakablealgorithm}
+\end{document}

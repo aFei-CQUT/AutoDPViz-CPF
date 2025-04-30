@@ -1,0 +1,88 @@
+\documentclass[UTF8,a4paper,multi=alg,varwidth]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage[linesnumbered, ruled]{algorithm2e}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+% Font configuration consistent with the template
+\setmainfont{Times New Roman}
+\setmathfont{XITS Math}
+
+% Algorithm formatting configuration
+\SetAlFnt{\normalsize}
+\SetAlCapFnt{\normalsize\bfseries}
+\SetAlCapNameFnt{\normalsize}
+\SetAlCapSkip{0pt} % Reduce spacing between caption and content
+
+\begin{document}
+
+\begin{minipage}{1.60\textwidth} % Set content width to 160% of page width
+\begin{algorithm}[H]
+    \caption{过滤实验数据处理数学建模}
+    \KwIn{实验数据矩阵 $D$}
+    \KwOut{过滤常数 $K$, 压缩系数 $s$, 物料常数 $k$}
+    
+    \tcp{数据加载与预处理}
+    \textbf{初始化}:  
+    $D \leftarrow \text{load\_csv}()$\;
+    执行数据清洗: $D \leftarrow D \setminus \{\text{缺失值}\}$\;
+    构建数据矩阵:
+    \[
+    D = \begin{pmatrix}
+    \theta_1 & q_1 \\
+    \theta_2 & q_2 \\
+    \vdots & \vdots \\
+    \theta_n & q_n
+    \end{pmatrix}
+    \]
+    
+    \tcp{鲁棒线性拟合}
+    计算液体体积 $V$ 与时间的关系\;
+    基于恒压过滤方程:
+    \[
+    \frac{\Delta \theta}{\Delta q} = \frac{K A^2}{2(V + V_e)}
+    \]
+    使用Huber回归模型拟合:
+    \[
+    \frac{\Delta \theta}{\Delta q} = \text{slope} \cdot q + \text{intercept}
+    \]
+    通过Huber损失函数估计斜率和截距，得到初步 $K$:
+    \[
+    \hat{K} = \frac{1}{\text{slope}}
+    \]
+    
+    \tcp{异常值检测与数据清洗}
+    计算残差 $r_i = y_i - \hat{y}_i$ \quad $\forall i \in [1,n]$\;
+    计算Z分数:
+    \[
+    Z_i = \frac{|r_i|}{\sigma_r} \quad \forall i \in [1,n]
+    \]
+    \For{$i \leftarrow 1$ \KwTo $n$}{
+        \If{$Z_i > 2$}{
+            $D \leftarrow D \setminus \{(\theta_i, q_i)\}$\;
+        }
+    }
+    
+    \tcp{后拟合计算}
+    移除异常值后，执行标准线性回归拟合\;
+    得到最终 $K$:
+    \[
+    K = \frac{1}{\text{slope}}
+    \]
+    确定压缩系数 $s$ 和物料常数 $k$:
+    \[
+    s = \text{由实验确定}, \quad k = \text{物料常数}
+    \]
+    
+    \tcp{数值仿真和可视化}
+    使用数学模型进行数值仿真，预测液体体积和高度\;
+    可视化拟合结果与实验数据，比较异常值影响\;
+    
+    \tcp{最终结果和输出}
+    输出液体体积、过滤时间和过滤常数\;
+    \Return $K, s, k$\;
+\end{algorithm}
+\end{minipage}
+
+\end{document}
